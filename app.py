@@ -28,9 +28,8 @@ def login():
         username = request.form['username']
 
         user = db.execute("SELECT * FROM users WHERE username = ?", username)
-
         if user:
-            session['user_id'] = user[0]['id']
+            session['user_id'] = user[0]['username']
             return redirect("/")
         else:
             return "Invalid username", 400
