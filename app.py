@@ -15,3 +15,7 @@ Session(app)
 db = SQL("sqlite:///data.db")
 
 
+
+
+def static_files(filename):
+    return send_from_directory(, filename, cache_timeout=3600)
