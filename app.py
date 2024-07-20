@@ -31,7 +31,7 @@ def login():
 
         if user:
             session['user_id'] = user[0]['id']
-            return redirect(url_for('index'))
+            return redirect('/index')
         else:
             return "Invalid username", 400
 
