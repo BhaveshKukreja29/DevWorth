@@ -15,7 +15,7 @@ Session(app)
 db = SQL("sqlite:///data.db")
 
 
-
-
-def static_files(filename):
-    return send_from_directory(, filename, cache_timeout=3600)
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
