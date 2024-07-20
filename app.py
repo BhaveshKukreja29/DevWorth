@@ -16,8 +16,10 @@ Session(app)
 db = SQL("sqlite:///data.db")
 
 @app.route("/")
+@login_required
 def index():
-    
+    return render_template('index.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
