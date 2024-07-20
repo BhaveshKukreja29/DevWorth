@@ -15,6 +15,21 @@ Session(app)
 db = SQL("sqlite:///data.db")
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+
+        user = db.execute("SELECT * FROM users WHERE username = ?", username)
+
+        if user:
+            session['user_id'] = user[0]['id']
+            return redirect(url_for('index'))
+        else:
+            return "Invalid username", 400
+
+    return render_template('login.html')
+
 @app.route('/logout')
 def logout():
     session.clear()
