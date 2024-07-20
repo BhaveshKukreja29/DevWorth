@@ -3,7 +3,7 @@ from functools import wraps
 
 def login_required(f):
     """
-    Decorate routes to require login.
+    When used on a function, requires the user to be logged in.
 
     https://flask.palletsprojects.com/en/latest/patterns/viewdecorators/
     """
