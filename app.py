@@ -31,11 +31,11 @@ def login():
 
         if user:
             session['user_id'] = user[0]['id']
-            return redirect('/')
+            return redirect("/")
         else:
             return "Invalid username", 400
-
-    return render_template('login.html')
+    else:
+        return render_template('login.html')
 
 
 '''
