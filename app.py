@@ -37,7 +37,7 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/logout')
+@app.route('/logout', methods='POST')
 def logout():
     session.clear()
-    return redirect(url_for('login'))
+    return redirect('/login')
