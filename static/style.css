@@ -1,15 +1,225 @@
-body {
+:root {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    --color: rgba(16, 173, 212, 0.39);
+    --taupe: #463f3aff;
+    --battleship-gray: #8a817cff;
+    --silver: #bcb8b1ff;
+    --isabelline: #f4f3eeff;
+    --melon: #e0afa0ff;
+    --light-gray: #d0d0d0;
+    --dark-gray: #505050;
+    --highlight: #ffffff;
+    --shadow: #000000;
+  }
+  
+  html {
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    --gap: 5em;
+    --line: 1px;
+    --color: rgba(16, 173, 212, 0.39);
+    background-image: linear-gradient(
+        -90deg,
+        transparent calc(var(--gap) - var(--line)),
+        var(--color) calc(var(--gap) - var(--line) + 1px),
+        var(--color) var(--gap)
+      ),
+      linear-gradient(
+        0deg,
+        transparent calc(var(--gap) - var(--line)),
+        var(--color) calc(var(--gap) - var(--line) + 1px),
+        var(--color) var(--gap)
+      );
+    background-size: var(--gap) var(--gap);
+  }
+  
+  body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    background-color: transparent;
+    color: var(--taupe);
+  }
+  
+  .authentication {
+    display: block;
+    width: 90%;
+    max-width: 400px;
+    font-size: 2rem;
+    background-color: var(--battleship-gray);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    /* box-shadow: 
+      15px 15px 30px var(--shadow),
+      -15px -15px 30px var(--highlight); */
+  }
+  
+  .authentication::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.2) 100%); */
+    pointer-events: none;
+  }
+  
+  .inner-container {
+    margin: 1.5rem;
+    background-color: #000000;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: inset 5px 5px 10px var(--shadow),
+                inset -5px -5px 10px var(--dark-gray);
+  }
+  
+  .authentication input {
+    font-size: 1rem;
+    height: 3rem;
+    margin: 0.5rem 0;
+    width: 100%;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: var(--isabelline);
+    border: none;
+    padding: 0 1rem;
+    box-shadow: 
+      inset 2px 2px 5px var(--shadow),
+      inset -2px -2px 5px var(--highlight);
+  }
+  
+  .authentication p {
+    margin: 0 1rem 0.5rem;
+  }
+  
+  .login, .forgot-password, .new-account {
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+  
+  .query {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0.7rem 0px;
+  }
+  
+  .new-account {
+    margin-right: 1rem;
+  }
+  
+  .forgot-password, .login {
+    margin-left: 1rem;
+  }
+  
+  .foot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+  }
+  
+  #head {
+    font-size: 2.5rem;
+    font-weight: 600;
     text-align: center;
-    flex-direction: column;
-    overflow: auto;
-    max-height: 100%;
-    background: linear-gradient(180deg, #000084, #6a00a8);
-    color: #ffffff;
-    font-family: 'Roboto', sans-serif;
-}
-
+    color: var(--isabelline);
+    text-shadow: 2px 2px 4px var(--shadow);
+  }
+  
+  #google {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: var(--isabelline);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+      5px 5px 10px var(--shadow),
+      -5px -5px 10px var(--highlight);
+  }
+  
+  #google::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.2) 100%);
+    pointer-events: none;
+  }
+  
+  #google img {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+  }
+  /* Mobile-specific styles */
+  @media (max-width: 499px) {
+    :root {
+      font-size: 14px; /* Slightly smaller base font size for mobile */
+    }
+  
+    .authentication {
+      width: 95%; /* Wider on very small screens */
+      font-size: 1.5rem;
+    }
+  
+    .inner-container {
+      margin: 0.5rem;
+    }
+  
+    .authentication input {
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+      width: calc(100% - 1rem);
+    }
+  
+    .login, .forgot-password, .new-account {
+      font-size: 0.8rem;
+    }
+  
+    .query {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .new-account, .forgot-password, .login {
+      margin: 0.5rem 0;
+    }
+  }
+  
+  /* Larger screen styles */
+  @media (min-width: 500px) {
+    .inner-container {
+      margin: 1.5rem;
+    }
+  
+    .new-account {
+      margin-right: 1.5rem;
+    }
+  
+    .forgot-password, .login {
+      margin-left: 1.5rem;
+    }
+  
+    .login, .forgot-password, .new-account {
+      font-size: 0.75rem;
+    }
+  
+    .authentication {
+      width: 80%;
+    }
+  }
