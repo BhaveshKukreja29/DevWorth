@@ -1,3 +1,5 @@
+/*----------------------------style for login and sign--------------------------------------------*/
+
 :root {
     font-size: 16px;
     margin: 0;
@@ -37,16 +39,24 @@
   }
   
   body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     min-height: 100vh;
     margin: 0;
     background-color: transparent;
     color: var(--taupe);
   }
+
+  .main{
+    
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   .authentication {
+    margin-top: 6rem;
     display: block;
     width: 90%;
     max-width: 400px;
