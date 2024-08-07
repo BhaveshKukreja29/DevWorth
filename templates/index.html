@@ -4,25 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-
-    <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="static/homepage.css">
 </head>
 <body>
-   
-<div class="content">
-    <div class="box">
-        WELCOME USERNAME <br></div>
-        
-    </div>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
-    <link rel="stylesheet" href="style.css">
-
-
-        
-        <div class="leaderboard">
+    <header>
+        <h1>Welcome USERNAME</h1>
+    </header>
+    
+    <main>
+        <section class="leaderboard">
             <h2>Leaderboard</h2>
             <ul>
                 <li>
@@ -34,54 +24,45 @@
                     <span class="name">2nd. MASTER OF SILVER</span>
                 </li>
                 <li>
-                <img src="profile3.jpg" alt="Profile Icon" class="profile-icon">
+                    <img src="profile3.jpg" alt="Profile Icon" class="profile-icon">
                     <span class="name">3rd. BRONZE GURU</span>
-
                 </li>
                 <li>
-                <img src="profile4.jpg" alt="Profile Icon" class="profile-icon">
+                    <img src="profile4.jpg" alt="Profile Icon" class="profile-icon">
                     <span class="name">Elite Contender</span>
-                    
                 </li>
                 <li>
                     <img src="profile5.jpg" alt="Profile Icon" class="profile-icon">
-                        <span class="name">Elite Contender</span>
-                        
-                    </li>
-                    <li>
-                        <img src="profile6.jpg" alt="Profile Icon" class="profile-icon">
-                            <span class="name">Elite Contender</span>
-                            
-                        </li>
-                        <li>
-                            <img src="profile7.jpg" alt="Profile Icon" class="profile-icon">
-                                <span class="name">Elite Contender</span>
-                                
-                            </li>
-                            
-                    
-
-                    
+                    <span class="name">Elite Contender</span>
+                </li>
+                <li>
+                    <img src="profile6.jpg" alt="Profile Icon" class="profile-icon">
+                    <span class="name">Elite Contender</span>
+                </li>
+                <li>
+                    <img src="profile7.jpg" alt="Profile Icon" class="profile-icon">
+                    <span class="name">Elite Contender</span>
                 </li>
             </ul>
-        </div>
-    </div>
-    <div class="streaksbox">
-        <h3>Streaks Maintained</h3>
-        <p>Number of Days: <span id="streak-count">50</span></p>
-    </div>
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search...">
-        <button id="search-button">Search</button>
-    </div>
-    <div id="search-results"></div>
-    <div class="settings-container">
-        <button id="settings-button
-        "
-    </div>
+        </section>
+        
+        <section class="streaks">
+            <h3>Streaks Maintained</h3>
+            <p>Number of Days: <span id="streak-count">50</span></p>
+        </section>
 
-    <script src="script.js"></script>
-</div>
+        <section class="search">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button">Search</button>
+            </div>
+            <div id="search-results"></div>
+        </section>
+    </main>
+    
+    <footer>
+        <button id="settings-button">Settings</button>
+    </footer>
 
 </body>
 </html>
