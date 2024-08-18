@@ -16,7 +16,7 @@ Session(app)
 
 db = SQL("sqlite:///data.db")
 
-@app.route('/home')
+@app.route('/')
 @login_required
 def index():
     return render_template('index.html')
@@ -28,26 +28,29 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
+        nameErr = None
+        passErr = None
+
         if not username:
-            flash('Username required!')
-
+            nameErr = 'Username required!'
         elif not password:
-            flash('Password required!')
-
+            passErr = 'Password required!'
         else:
             user = db.execute("SELECT * FROM users WHERE username = ?", username)
 
-            if len(user) != 1 or not check_password_hash(user[0]['password'],password):
-                flash('Invalid Username or Password')
-                print('Invalid Username or Password')
+            if len(user) == 0:
+                nameErr = 'Invalid username'
+
+            if len(user) != 1 or not check_password_hash(user[0]['password'], password):
+                passErr = 'Invalid Password'
             else:
                 session['user_id'] = user[0]['id']
-                return redirect('/home')
+                return redirect('/')
 
+        return render_template('login.html', nameErr=nameErr, passErr=passErr)
 
     else:
         return render_template('login.html')
-
 
 @app.route('/logout', methods=['POST'])
 def logout():
@@ -61,23 +64,28 @@ def register():
         password1 = request.form['password1']
         password2 = request.form['password2']
 
+
+        nameErr = None
+        passErr = None
+        pass2Err = None
+        passMatch = None
         if not username:
-            flash('Username required!')
+            nameErr = 'Username required!'
 
         elif not password1:
-            flash('Password required!')
+            passErr = 'Password required!'
 
         elif not password2:
-            flash('Confirm Password required!')
+            pass2Err = 'Confirm Password required!'
 
         elif password1 != password2:
-            flash('Passwords do not match!')
+            passMatch = 'Passwords do not match!'
 
         else:
             hash = generate_password_hash(password1)
 
             db.execute("INSERT INTO users (username, password) VALUES(?, ?)", username, hash)
-            flash('Registeration Succesful!')
+
             return redirect('/login')
 
     else:

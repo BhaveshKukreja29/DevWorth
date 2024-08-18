@@ -53,9 +53,15 @@
                         <form action="/login" method="post">
                             <p>Username</p>
                             <input type="text" name="username" id="username" placeholder="Username"/>
+                            {% if nameErr %}
+                                <div class="errorMessage" style="color: Red;">{{ nameErr }}</div>
+                            {% endif %}
 
                             <p>Password</p>
                             <input type="password" name="password" id="password" placeholder="Password"/><br/>
+                            {% if passErr %}
+                                <div class="errorMessage" style="color: Red;">{{ passErr }}</div>
+                            {% endif %}
 
                             <button type="submit">Login</button>
                         </form>
@@ -68,17 +74,5 @@
                 </div>
             </div>
         </div>
-
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="alert alert-danger" role="alert">
-                    <ul>
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endif %}
-        {% endwith %}
     </body>
 </html>
