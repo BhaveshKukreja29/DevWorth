@@ -64,12 +64,17 @@ def register():
         password1 = request.form['password1']
         password2 = request.form['password2']
 
+        user = db.execute("SELECT * FROM users WHERE username = ?", username)
 
         nameErr = None
         passErr = None
         pass2Err = None
         passMatch = None
-        if not username:
+
+        if user != None:
+            nameErr = 'User already exists'
+
+        elif not username:
             nameErr = 'Username required!'
 
         elif not password1:
@@ -87,6 +92,11 @@ def register():
             db.execute("INSERT INTO users (username, password) VALUES(?, ?)", username, hash)
 
             return redirect('/login')
+
+        return render_template('signup.html', nameErr = nameErr,
+        passErr = passErr,
+        pass2Err = pass2Err,
+        passMatch = passMatch)
 
     else:
         return render_template('signup.html')
