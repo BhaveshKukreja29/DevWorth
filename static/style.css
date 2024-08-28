@@ -1,235 +1,198 @@
 /*----------------------------style for login and sign--------------------------------------------*/
 
 :root {
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
-    --color: rgba(16, 173, 212, 0.39);
-    --taupe: #463f3aff;
-    --battleship-gray: #8a817cff;
-    --silver: #bcb8b1ff;
-    --isabelline: #f4f3eeff;
-    --melon: #e0afa0ff;
-    --light-gray: #d0d0d0;
-    --dark-gray: #505050;
-    --highlight: #ffffff;
-    --shadow: #000000;
-  }
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  --primary: rgb(3, 93, 12);
+  --primary-light: rgb(3, 93, 12,0.5);
+  --white: #ffffff;
+  --off-white: #ded8d8;
+  --gray: #e0e0e0;
+  --dark-gray: #333333;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
 
-  html {
-    width: 100%;
-    height: 100%;
-    background: #000000;
-    --gap: 5em;
-    --line: 1px;
-    --color: rgba(16, 173, 212, 0.39);
-    background-image: linear-gradient(
-        -90deg,
-        transparent calc(var(--gap) - var(--line)),
-        var(--color) calc(var(--gap) - var(--line) + 1px),
-        var(--color) var(--gap)
-      ),
-      linear-gradient(
-        0deg,
-        transparent calc(var(--gap) - var(--line)),
-        var(--color) calc(var(--gap) - var(--line) + 1px),
-        var(--color) var(--gap)
-      );
-    background-size: var(--gap) var(--gap);
-  }
+html {
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  --gap: 5em;
+  --line: 2px;
+  --color: var(--primary-light);
+  background-image: linear-gradient(
+      -90deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    ),
+    linear-gradient(
+      0deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    );
+  background-size: var(--gap) var(--gap);
+}
 
-  body {
-    display: block;
-    min-height: 100vh;
-    margin: 0;
-    background-color: transparent;
-    color: var(--taupe);
-  }
+body {
+  display: block;
+  min-height: 110vh;
+  margin: 0;
+  background-color: transparent;
+  color: var(--dark-gray);
+}
 
-  .main{
+.main {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.authentication {
+  margin-top: 6rem;
+  display: block;
+  width: 90%;
+  max-width: 400px;
+  font-size: 2rem;
+  background-color: var(--white);
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(3, 93, 12, 1);
+}
+
+.inner-container {
+  margin: 1.5rem;
+  background-color: var(--off-white);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: inset 0 2px 4px var(--shadow);
+}
+
+.authentication input {
+  font-size: 1rem;
+  height: 3rem;
+  margin: 0.5rem 0;
+  width: 100%;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: var(--white);
+  border: 1px solid var(--gray);
+  padding: 0 1rem;
+}
+
+.authentication p {
+  margin: 0 1rem 0.5rem;
+}
+
+.login, .forgot-password, .new-account {
+  text-decoration: none;
+  font-size: 0.875rem;
+  color: var(--primary);
+}
+
+.query {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0.7rem 0px;
+}
+
+.new-account {
+  margin-right: 1rem;
+}
+
+.forgot-password, .login {
+  margin-left: 1rem;
+}
+
+.foot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+}
+
+#head {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--primary);
+}
+
+#submit-btn{
+  width: 100%;
+  border-radius: 2rem ;
+  margin-top: 1rem;
+  font-weight: 200;
+  background-color: var(--primary-light);
+}
+/* Mobile-specific styles */
+@media (max-width: 499px) {
+  :root {
+    font-size: 14px;
   }
 
   .authentication {
-    margin-top: 6rem;
-    display: block;
-    width: 90%;
-    max-width: 400px;
-    font-size: 2rem;
-    background-color: var(--battleship-gray);
-    border-radius: 15px;
-    position: relative;
-    overflow: hidden;
-    /* box-shadow:
-      15px 15px 30px var(--shadow),
-      -15px -15px 30px var(--highlight); */
-  }
-
-  .authentication::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.2) 100%); */
-    pointer-events: none;
+    width: 95%;
+    font-size: 1.5rem;
   }
 
   .inner-container {
-    margin: 1.5rem;
-    background-color: #000000;
-    border-radius: 10px;
-    padding: 1rem;
-    box-shadow: inset 5px 5px 10px var(--shadow),
-                inset -5px -5px 10px var(--dark-gray);
+    margin: 0.5rem;
   }
 
   .authentication input {
-    font-size: 1rem;
-    height: 3rem;
-    margin: 0.5rem 0;
-    width: 100%;
-    border-radius: 8px;
-    box-sizing: border-box;
-    background-color: var(--isabelline);
-    border: none;
-    padding: 0 1rem;
-    box-shadow:
-      inset 2px 2px 5px var(--shadow),
-      inset -2px -2px 5px var(--highlight);
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    width: calc(100% - 1rem);
   }
-
-  .authentication p {
-    margin: 0 1rem 0.5rem;
+  input::placeholder {
+    opacity: 0;
   }
 
   .login, .forgot-password, .new-account {
-    text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
   }
 
   .query {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 0.7rem 0px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .new-account, .forgot-password, .login {
+    margin: 0.5rem 0;
+  }
+}
+
+.errorMessage{
+  font-size: 1rem;
+  padding-left: 1rem;
+  font-weight: 100;
+}
+
+/* Larger screen styles */
+@media (min-width: 500px) {
+  .inner-container {
+    margin: 1.5rem;
   }
 
   .new-account {
-    margin-right: 1rem;
+    margin-right: 1.5rem;
   }
 
   .forgot-password, .login {
-    margin-left: 1rem;
+    margin-left: 1.5rem;
   }
 
-  .foot {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0px;
+  .login, .forgot-password, .new-account {
+    font-size: 0.75rem;
   }
 
-  #head {
-    font-size: 2.5rem;
-    font-weight: 600;
-    text-align: center;
-    color: var(--isabelline);
-    text-shadow: 2px 2px 4px var(--shadow);
+  .authentication {
+    width: 80%;
   }
-
-  #google {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem auto;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    background-color: var(--isabelline);
-    position: relative;
-    overflow: hidden;
-    box-shadow:
-      5px 5px 10px var(--shadow),
-      -5px -5px 10px var(--highlight);
-  }
-
-  #google::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.2) 100%);
-    pointer-events: none;
-  }
-
-  #google img {
-    width: 2.5rem;
-    height: 2.5rem;
-    position: relative;
-  }
-  /* Mobile-specific styles */
-  @media (max-width: 499px) {
-    :root {
-      font-size: 14px; /* Slightly smaller base font size for mobile */
-    }
-
-    .authentication {
-      width: 95%; /* Wider on very small screens */
-      font-size: 1.5rem;
-    }
-
-    .inner-container {
-      margin: 0.5rem;
-    }
-
-    .authentication input {
-      margin-right: 0.5rem;
-      margin-left: 0.5rem;
-      width: calc(100% - 1rem);
-    }
-
-    .login, .forgot-password, .new-account {
-      font-size: 0.8rem;
-    }
-
-    .query {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .new-account, .forgot-password, .login {
-      margin: 0.5rem 0;
-    }
-  }
-
-  /* Larger screen styles */
-  @media (min-width: 500px) {
-    .inner-container {
-      margin: 1.5rem;
-    }
-
-    .new-account {
-      margin-right: 1.5rem;
-    }
-
-    .forgot-password, .login {
-      margin-left: 1.5rem;
-    }
-
-    .login, .forgot-password, .new-account {
-      font-size: 0.75rem;
-    }
-
-    .authentication {
-      width: 80%;
-    }
-  }
+}
