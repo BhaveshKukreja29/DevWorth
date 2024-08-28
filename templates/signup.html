@@ -12,37 +12,6 @@
     </head>
 
     <body>
-        <!------------------Floating nav bar---------------------------------------------------->
-        <div class="container">
-            <nav class="navbar d-flex justify-content-between align-items-center py-3 mb-4 border-bottom">
-                <div class="navbar-left">
-                    <div class="hamburger" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                        <div class="hamburger1"></div>
-                        <div class="hamburger2"></div>
-                        <div class="hamburger3"></div>
-                    </div>
-
-                    <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none ms-3">
-                        <!-- Your logo or site name here -->
-                    </a>
-                </div>
-                <div class="navbar-right">
-                    <button id="login-btn"><a href="/login">Login</a></button>
-                    <button id="sign-btn"><a href="/logout">Logout</a></button>
-                </div>
-            </nav>
-        </div>
-
-        <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <!-- To anything to the menu write in this div -->
-            </div>
-        </div>
-
         <!----------------------------sign----------------------------------------------->
         <div class="main">
             <div class="authentication">
@@ -61,22 +30,22 @@
                             <p>Password</p>
                             <input type="password" name="password1" id="password1" placeholder="Password"/>
                             {% if passErr %}
-                                <div class="errorMessage">{{ passErr }}</div>
+                                <div class="errorMessage" style="color: Red;">{{ passErr }}</div>
                             {% endif %}
 
 
                             <p>Confirm password</p>
                             <input type="password" name="password2" id="password2" placeholder="Confirm Password"/><br/>
                             {% if pass2Err %}
-                                <div class="errorMessage">{{ pass2Err }}</div>
+                                <div class="errorMessage" style="color: Red;">{{ pass2Err }}</div>
                             {% endif %}
 
                             {% if passMatch %}
-                                <div class="errorMessage">{{ passMatch }}</div>
+                                <div class="errorMessage" style="color: Red;">{{ passMatch }}</div>
                             {% endif %}
 
 
-                            <button type="submit">Sign Up</button>
+                            <button id="submit-btn" type="submit">Sign Up</button>
                         </form>
                         <div class="query">
                             <a href="/login" class="login">Already have an account?</a>
