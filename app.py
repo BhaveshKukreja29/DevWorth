@@ -2,7 +2,7 @@ import os
 import time
 
 from cs50 import SQL
-from flask import Flask, flash, jsonify, redirect, render_template, request, session, flash
+from flask import Flask, jsonify, redirect, render_template, request, session, flash
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -19,7 +19,7 @@ db = SQL("sqlite:///data.db")
 @app.route('/')
 @login_required
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
