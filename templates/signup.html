@@ -61,18 +61,18 @@
                             <p>Password</p>
                             <input type="password" name="password1" id="password1" placeholder="Password"/>
                             {% if passErr %}
-                                <div class="errorMessage" style="color: Red;">{{ passErr }}</div>
+                                <div class="errorMessage">{{ passErr }}</div>
                             {% endif %}
 
 
                             <p>Confirm password</p>
                             <input type="password" name="password2" id="password2" placeholder="Confirm Password"/><br/>
                             {% if pass2Err %}
-                                <div class="errorMessage" style="color: Red;">{{ pass2Err }}</div>
+                                <div class="errorMessage">{{ pass2Err }}</div>
                             {% endif %}
 
                             {% if passMatch %}
-                                <div class="errorMessage" style="color: Red;">{{ passMatch }}</div>
+                                <div class="errorMessage">{{ passMatch }}</div>
                             {% endif %}
 
 

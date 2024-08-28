@@ -1,16 +1,16 @@
 /*-----------------style for navbar-----------------------------------------*/
 :root {
   font-family: cursive;
-  background-color: grey;
+  background-color: white;
   color: white;
 }
 
 body{
-  background-color: grey;
+  background-color: white;
 }
 
 .offcanvas {
-  background-color: grey;
+  background-color: white;
   border: none;
 }
 
@@ -19,7 +19,7 @@ body{
   padding: 0 !important;
   margin: 0 !important;
   z-index: 1000;
- border: 1px solid grey;
+ border: 1px solid white;
 
 }
 
@@ -31,7 +31,7 @@ body{
 }
 
 .navbar a, .navbar button {
-  color: white;
+  color: green;
   text-decoration: none;
 }
 
@@ -55,7 +55,7 @@ body{
 }
 
 #sign-btn {
-  background: grey;
+  background: white;
   margin-right: 1rem;
   width: 6rem;
   border-color: rgb(3, 93, 12);
@@ -81,7 +81,7 @@ body{
 
 .home {
   border: 0px;
-  background-color: grey;
+  background-color: white;
   width: 100%;
   display: flex;
   height: calc(100vh - 60px); /* Adjust 60px to your navbar height */
@@ -89,7 +89,7 @@ body{
 
 main {
   border: 0px;
-  background-color: grey;
+  background-color: white;
   border-radius: 0.4rem;
   width: 70%;
   margin-left: 1rem;
@@ -102,7 +102,7 @@ main {
 
 
 aside {
-  background-color: grey;
+  background-color: white;
   border-radius: 0.4rem;
   width: 30%;
   margin-left: 1rem;
@@ -112,7 +112,7 @@ aside {
 }
 
 #progress, #badges, #github, .streak {
-  background-color: grey;
+  background-color: white;
   box-shadow: 0 0 7px  rgba(3, 93, 12, 0.8);
   border-radius: 0.6rem;
   margin-bottom: 1rem;

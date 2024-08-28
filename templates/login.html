@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="static/style.css">
         <link rel="stylesheet" href="static/style2.css">
     </head>
-
+    
     <body>
         <!------------------Floating nav bar---------------------------------------------------->
         <div class="container">
@@ -25,11 +25,6 @@
                     <a href="/index" class="d-inline-flex link-body-emphasis text-decoration-none ms-3">
                         <!-- Your logo or site name here -->
                     </a>
-                </div>
-
-                <div class="navbar-right">
-                    <button id="login-btn"> <a href="/login" method="POST">Login</a></button>
-                    <button id="sign-btn"><a href="/logout">Logout</a></button>
                 </div>
             </nav>
         </div>
@@ -63,7 +58,7 @@
                                 <div class="errorMessage" style="color: Red;">{{ passErr }}</div>
                             {% endif %}
 
-                            <button type="submit">Login</button>
+                            <button type="login-btn">Login</button>
                         </form>
 
                         <div class="query">

@@ -15,7 +15,7 @@
     --highlight: #ffffff;
     --shadow: #000000;
   }
-  
+
   html {
     width: 100%;
     height: 100%;
@@ -37,7 +37,7 @@
       );
     background-size: var(--gap) var(--gap);
   }
-  
+
   body {
     display: block;
     min-height: 100vh;
@@ -47,14 +47,14 @@
   }
 
   .main{
-    
+
     height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
+
   .authentication {
     margin-top: 6rem;
     display: block;
@@ -65,11 +65,11 @@
     border-radius: 15px;
     position: relative;
     overflow: hidden;
-    /* box-shadow: 
+    /* box-shadow:
       15px 15px 30px var(--shadow),
       -15px -15px 30px var(--highlight); */
   }
-  
+
   .authentication::before {
     content: '';
     position: absolute;
@@ -80,7 +80,7 @@
     /* background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.2) 100%); */
     pointer-events: none;
   }
-  
+
   .inner-container {
     margin: 1.5rem;
     background-color: #000000;
@@ -89,7 +89,7 @@
     box-shadow: inset 5px 5px 10px var(--shadow),
                 inset -5px -5px 10px var(--dark-gray);
   }
-  
+
   .authentication input {
     font-size: 1rem;
     height: 3rem;
@@ -100,42 +100,42 @@
     background-color: var(--isabelline);
     border: none;
     padding: 0 1rem;
-    box-shadow: 
+    box-shadow:
       inset 2px 2px 5px var(--shadow),
       inset -2px -2px 5px var(--highlight);
   }
-  
+
   .authentication p {
     margin: 0 1rem 0.5rem;
   }
-  
+
   .login, .forgot-password, .new-account {
     text-decoration: none;
     font-size: 0.875rem;
   }
-  
+
   .query {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 0.7rem 0px;
   }
-  
+
   .new-account {
     margin-right: 1rem;
   }
-  
+
   .forgot-password, .login {
     margin-left: 1rem;
   }
-  
+
   .foot {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0px;
   }
-  
+
   #head {
     font-size: 2.5rem;
     font-weight: 600;
@@ -143,7 +143,7 @@
     color: var(--isabelline);
     text-shadow: 2px 2px 4px var(--shadow);
   }
-  
+
   #google {
     display: flex;
     justify-content: center;
@@ -155,11 +155,11 @@
     background-color: var(--isabelline);
     position: relative;
     overflow: hidden;
-    box-shadow: 
+    box-shadow:
       5px 5px 10px var(--shadow),
       -5px -5px 10px var(--highlight);
   }
-  
+
   #google::before {
     content: '';
     position: absolute;
@@ -170,7 +170,7 @@
     background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.2) 100%);
     pointer-events: none;
   }
-  
+
   #google img {
     width: 2.5rem;
     height: 2.5rem;
@@ -181,54 +181,54 @@
     :root {
       font-size: 14px; /* Slightly smaller base font size for mobile */
     }
-  
+
     .authentication {
       width: 95%; /* Wider on very small screens */
       font-size: 1.5rem;
     }
-  
+
     .inner-container {
       margin: 0.5rem;
     }
-  
+
     .authentication input {
       margin-right: 0.5rem;
       margin-left: 0.5rem;
       width: calc(100% - 1rem);
     }
-  
+
     .login, .forgot-password, .new-account {
       font-size: 0.8rem;
     }
-  
+
     .query {
       flex-direction: column;
       align-items: center;
     }
-  
+
     .new-account, .forgot-password, .login {
       margin: 0.5rem 0;
     }
   }
-  
+
   /* Larger screen styles */
   @media (min-width: 500px) {
     .inner-container {
       margin: 1.5rem;
     }
-  
+
     .new-account {
       margin-right: 1.5rem;
     }
-  
+
     .forgot-password, .login {
       margin-left: 1.5rem;
     }
-  
+
     .login, .forgot-password, .new-account {
       font-size: 0.75rem;
     }
-  
+
     .authentication {
       width: 80%;
     }
