@@ -60,10 +60,12 @@
 <div class="home">
     <main>
         <div id="progress">
-
             <div id="outer-bar"><div id="bar"></div> </div> <p></p>
         </div>
-        <iframe src="/static/pdf.pdf" width="100%" height="100%"></iframe>
+
+        <div id="pdf-container" style="height: 600px; overflow-y: scroll; border: 1px solid #ccc;">
+            <iframe id="pdf-viewer" src="/static/pdf.pdf" width="100%" height="100%"></iframe>
+        </div>
     </main>
     <aside>
 
@@ -87,5 +89,16 @@
         </div>
     </aside>
 </div>
+
+<script>
+    document.getElementById("pdf-container").addEventListener("scroll", function() {
+            const container = document.getElementById("pdf-container");
+            const scrollTop = container.scrollTop;
+            const scrollHeight = container.scrollHeight - container.clientHeight;
+            const scrolled = (scrollTop / scrollHeight) * 100;
+            document.getElementById("bar").style.width = scrolled + "%";
+        });
+</script>
+
 </body>
 </html>
