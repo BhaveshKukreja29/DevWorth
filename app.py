@@ -71,7 +71,7 @@ def register():
         pass2Err = None
         passMatch = None
 
-        if user != None:
+        if len(user) > 0:
             nameErr = 'User already exists'
 
         elif not username:
