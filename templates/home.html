@@ -20,7 +20,7 @@
                  <div class="hamburger2"></div>
                  <div class="hamburger3"></div>
              </div>
-
+             
              <a href="/index" class="d-inline-flex link-body-emphasis text-decoration-none ms-3">
                  <!-- Your logo or site name here -->
              </a>
@@ -34,7 +34,7 @@
               </button>
             </div>
           </form></div> -->
-<!--
+<!-- 
          <div class="navbar-right">
             <a href="/templates/login.html" id="login-btn" class="btn">Login</a>
             <a href="/templates/signup.html" id="sign-btn" class="btn">Sign Up</a>
@@ -44,14 +44,14 @@
 
  <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
      <div class="offcanvas-body">
-
+      
         <div class="user"></div>
         <div class="setting"></div>
 
         <div class="close">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-
+     
      </div>
  </div>
 
@@ -60,22 +60,22 @@
 <div class="home">
     <main>
         <div id="progress">
+        
             <div id="outer-bar"><div id="bar"></div> </div> <p></p>
         </div>
-
-        <div id="pdf-container" style="height: 600px; overflow-y: scroll; border: 1px solid #ccc;">
-            <iframe id="pdf-viewer" src="/static/pdf.pdf" width="100%" height="100%"></iframe>
-        </div>
+        <iframe src="/templates/Sem-III & Sem-IV.pdf" width="100%" height="100%"></iframe>
     </main>
     <aside>
 
         <div class="streak">
-            <p>Days of streak: 34</p>
-        </div>
-
+            <div class="streak-circle">
+              <span class="streak-number">34</span>
+            </div>
+          </div>
+          
+     
         <div id="github">
-            <div id="git"><img src="/static/github.svg" ></div>
-            <!-- <div id="leet"><img src="/templates/just-solved-problem-with-todays-daily-v0-uiy1ntbwhy9a1.webp"></div> -->
+            <div id="git"><img src="/templates/github.svg" ></div>
         </div>
         <div id="badges">
             <div class="leaderboard"><p>Leaderboard</p></div>
@@ -89,16 +89,8 @@
         </div>
     </aside>
 </div>
-
-<script>
-    document.getElementById("pdf-container").addEventListener("scroll", function() {
-            const container = document.getElementById("pdf-container");
-            const scrollTop = container.scrollTop;
-            const scrollHeight = container.scrollHeight - container.clientHeight;
-            const scrolled = (scrollTop / scrollHeight) * 100;
-            document.getElementById("bar").style.width = scrolled + "%";
-        });
-</script>
-
+<div id="github">
+    <div id="git"><img src="http://ghchart.rshah.org/calvincandiec137" alt="2016rshah's Github chart" /></div>
+</div>
 </body>
 </html>
