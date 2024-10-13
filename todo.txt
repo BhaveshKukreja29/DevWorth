@@ -1,0 +1,7 @@
+make landing page html: done
+make landng page css: done
+make new changes to login css: working
+make new changes to sign up css: 
+add github graph like thing in js: 
+revamp homepage css: 
+revamp backend: 

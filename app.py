@@ -17,6 +17,12 @@ Session(app)
 db = SQL("sqlite:///data.db")
 
 @app.route('/')
+def landing():
+    if session.get("user_id") is not None:
+        return redirect('/home')
+    return render_template('landing.html')
+
+@app.route('/home')
 @login_required
 def index():
     return render_template('home.html')
@@ -24,6 +30,11 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    
+    #redirect if already logged in
+    if session.get("user_id") is not None:
+        return redirect('/home')
+
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -45,7 +56,7 @@ def login():
                 passErr = 'Invalid Password'
             else:
                 session['user_id'] = user[0]['id']
-                return redirect('/')
+                return redirect('/home')
 
         return render_template('login.html', nameErr=nameErr, passErr=passErr)
 

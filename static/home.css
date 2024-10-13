@@ -1,16 +1,24 @@
-/*-----------------style for navbar-----------------------------------------*/
 :root {
-  font-family: cursive;
-  background-color: #ffffff;
-  color: #333333;
+  font-family: 'Arial', sans-serif;
+  --primary-color: #000000;
+  --secondary-color: #ffffff;
+  --accent-color: #f0f0f0;
+  --text-color: #333333;
+  --border-radius: 0.4rem;
+  --box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+  --streak-color: #ff6b6b;
+  --gold-color: #ffd700;
+  --silver-color: #c0c0c0;
+  --bronze-color: #cd7f32;
 }
 
-body{
-  background-color: #ffffff;
+body {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
 }
 
 .offcanvas {
-  background-color: #f5f5f5;
+  background-color: var(--accent-color);
   border: none;
 }
 
@@ -19,21 +27,21 @@ body{
   padding: 0px !important;
   margin: 0px !important;
   z-index: 1000;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--accent-color);
   margin-bottom: 2rem !important;
-  background-color: rgb(3, 93, 12,0.5);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .navbar {
-  background-color: rgb(3, 93, 12,0.5);
-  color: #333333;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--text-color);
   width: 100%;
   height: 100%;
   border: none !important;
 }
 
 .navbar a, .navbar button {
-  color: #333333;
+  color: var(--text-color);
   text-decoration: none;
 }
 
@@ -49,65 +57,63 @@ body{
 }
 
 #login-btn, #sign-btn {
-  background: rgb(3, 93, 12);
+  background: var(--primary-color);
   margin-right: 1rem;
   width: 6rem;
-  border-radius: 0.4rem;
-  border: 1px solid rgb(3, 93, 12);
-  color: #ffffff;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--primary-color);
+  color: var(--secondary-color);
+  transition: all 0.3s ease;
 }
 
 #sign-btn {
-  background: #ffffff;
-  margin-right: 1rem;
-  width: 6rem;
-  border-color: rgb(3, 93, 12);
-  border-radius: 0.4rem;
-  color: rgb(3, 93, 12) !important;
+  background: var(--secondary-color);
+  border-color: var(--primary-color);
+  color: var(--primary-color) !important;
+}
+
+#login-btn:hover, #sign-btn:hover {
+  opacity: 0.8;
 }
 
 .hamburger {
   margin-left: 1rem;
 }
 
-.hamburger1, .hamburger3, .hamburger2 {
+.hamburger1, .hamburger2, .hamburger3 {
   width: 2rem;
   height: 0.25rem;
-  background-color: rgb(3, 93, 12);
+  background-color: var(--primary-color);
   margin-bottom: 2px;
   border-radius: 2px;
 }
 
-.btn-close{
-  background-color: #f5f5f5;
+.btn-close {
+  background-color: var(--accent-color);
 }
-
-/*-------------------------------------------------Main-----------------------------------------------*/
 
 .home {
   border: 0px;
-  background-color: #ffffff;
+  background-color: var(--secondary-color);
   width: 100%;
   display: flex;
-  height: calc(100vh - 60px); /* Adjust 60px to your navbar height */
+  height: calc(100vh - 60px);
 }
 
 main {
   border: 0px;
-  background-color: #f5f5f5;
-  border-radius: 0.4rem;
+  background-color: var(--accent-color);
+  border-radius: var(--border-radius);
   width: 70%;
   height: 100%;
   margin-left: 1rem;
   overflow-y: auto;
-  box-shadow: 0 0 7px rgba(3, 93, 12, 1);
+  box-shadow: var(--box-shadow);
 }
 
-/*-----------------------aside-----------------------------------------------------------------------------------*/
-
 aside {
-  background-color: #ffffff;
-  border-radius: 0.4rem;
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
   width: 30%;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -116,25 +122,21 @@ aside {
 }
 
 #progress, #badges, .streak {
-  background-color: #f5f5f5;
-  box-shadow: 0 0 7px rgba(3, 93, 12, 1);
-  border-radius: 0.6rem;
+  background-color: var(--accent-color);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
   margin-bottom: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
-#github{
-  background-color: #f5f5f5;
-  box-shadow: 0 0 7px rgba(3, 93, 12, 1);
-  border-radius: 0.6rem;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
+#github {
+  background-color: var(--accent-color);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  margin: 1rem;
   padding: 2rem;
 }
-/*------------progress-------------------------------------------------------------------*/
 
 #progress {
   flex: 0 0 auto;
@@ -147,8 +149,8 @@ aside {
 }
 
 #outer-bar {
-  border: 1px solid rgb(3, 93, 12,0.8);
-  border-radius: 0.5rem;
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius);
   width: 100%;
   height: 0.7rem;
   margin: 0 auto;
@@ -159,10 +161,9 @@ aside {
 #bar {
   width: 80%;
   height: 100%;
-  background-color: rgb(3, 93, 12);
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
 }
-
-/*---------------------offcanvas-body--------------------------------------------------*/
 
 .offcanvas-body {
   padding: 0px;
@@ -183,8 +184,6 @@ aside {
   margin: 1rem;
 }
 
-/*------------badges------------*/
-
 #badges {
   flex: 3;
   display: flex;
@@ -199,18 +198,16 @@ aside {
   width: 80%;
   height: 2rem;
   padding-top: 0.3rem;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   text-align: center;
-  background-color: rgb(3, 93, 12);
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
-.board p{
+.board p {
   padding-left: 1rem;
-  padding-right:1rem ;
+  padding-right: 1rem;
 }
-
-/*------------github------------*/
 
 #github {
   flex: 1;
@@ -221,34 +218,35 @@ aside {
   align-items: center;
 }
 
-#git{
+#git {
   padding: 1rem;
   width: 100%;
 }
 
-#git > img{
+#git > img {
   width: 100%;
   height: auto;
   object-fit: contain;
 }
 
-/*-----------------------------search-------------------------------------------------------*/
-
-.search-btn{
+.search-btn {
   width: 5rem;
   height: 2rem;
-  border-radius: 0.4rem;
-  border: 1px solid rgb(3, 93, 12);
-  background-color: rgb(3, 93, 12) !important;
-  color: #ffffff;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color) !important;
+  color: var(--secondary-color);
+  transition: all 0.3s ease;
 }
 
-.text-xs{
+.search-btn:hover {
+  opacity: 0.8;
+}
+
+.text-xs {
   margin-bottom: 5rem;
   margin-top: 0px;
 }
-
-/*----------------streak------------------------------------------------------------------------*/
 
 .streak {
   text-align: center;
@@ -262,25 +260,107 @@ aside {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 6px solid rgb(3, 93, 12); /* Matching fire emoji color */
+  border: 6px solid var(--streak-color);
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   font-size: 24px;
   font-weight: bold;
-  color: #333333;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
 }
 
-.fire-emoji {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
+.streak-circle:hover {
+  transform: scale(1.05);
+}
+
+.streak-fire {
   font-size: 30px;
+  margin-top: 10px;
+  animation: burn 0.5s ease-in-out infinite alternate;
 }
 
-iframe{ 
-  border-radius: 0.7rem;
+@keyframes burn {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+.streak-stats {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.crown {
+  margin-right: 5px;
+}
+
+.gold { color: var(--gold-color); }
+.silver { color: var(--silver-color); }
+.bronze { color: var(--bronze-color); }
+
+#github-heatmap-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#github-heatmap {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  width: calc(100% - 60px);
+}
+
+.heatmap-cell {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+#prev-month, #next-month {
+  font-size: 18px;
+  padding: 0 5px;
+}
+
+iframe {
+  border-radius: var(--border-radius);
   padding: 1rem;
-  background-color:  #f5f5f5;
+  background-color: var(--accent-color);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+  }
+
+  main, aside {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+/* Accessibility improvements */
+a:focus, button:focus, input:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
