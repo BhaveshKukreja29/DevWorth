@@ -27,6 +27,11 @@ def landing():
 def index():
     return render_template('home.html')
 
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

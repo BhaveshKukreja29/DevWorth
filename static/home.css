@@ -1,366 +1,234 @@
-:root {
-  font-family: 'Arial', sans-serif;
-  --primary-color: #000000;
-  --secondary-color: #ffffff;
-  --accent-color: #f0f0f0;
-  --text-color: #333333;
-  --border-radius: 0.4rem;
-  --box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
-  --streak-color: #ff6b6b;
-  --gold-color: #ffd700;
-  --silver-color: #c0c0c0;
-  --bronze-color: #cd7f32;
-}
-
+/* Global styles */
 body {
-  background-color: var(--secondary-color);
-  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
 }
 
-.offcanvas {
-  background-color: var(--accent-color);
-  border: none;
-}
-
-.container {
-  max-width: 100% !important;
-  padding: 0px !important;
-  margin: 0px !important;
-  z-index: 1000;
-  border: 1px solid var(--accent-color);
-  margin-bottom: 2rem !important;
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
+/* Navbar styles */
 .navbar {
-  background-color: rgba(0, 0, 0, 0.05);
-  color: var(--text-color);
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #212529;
+}
+
+/* Main content layout */
+.container-fluid {
+  max-width: 1400px;
+  padding: 0 1rem;
+}
+
+/* Progress bar styles */
+.progress {
+  height: 20px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+#progress-bar {
   width: 100%;
   height: 100%;
-  border: none !important;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
-.navbar a, .navbar button {
-  color: var(--text-color);
-  text-decoration: none;
-}
-
-.navbar-left {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-#login-btn, #sign-btn {
-  background: var(--primary-color);
-  margin-right: 1rem;
-  width: 6rem;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--primary-color);
-  color: var(--secondary-color);
-  transition: all 0.3s ease;
-}
-
-#sign-btn {
-  background: var(--secondary-color);
-  border-color: var(--primary-color);
-  color: var(--primary-color) !important;
-}
-
-#login-btn:hover, #sign-btn:hover {
-  opacity: 0.8;
-}
-
-.hamburger {
-  margin-left: 1rem;
-}
-
-.hamburger1, .hamburger2, .hamburger3 {
-  width: 2rem;
-  height: 0.25rem;
-  background-color: var(--primary-color);
-  margin-bottom: 2px;
-  border-radius: 2px;
-}
-
-.btn-close {
-  background-color: var(--accent-color);
-}
-
-.home {
-  border: 0px;
-  background-color: var(--secondary-color);
-  width: 100%;
-  display: flex;
-  height: calc(100vh - 60px);
-}
-
-main {
-  border: 0px;
-  background-color: var(--accent-color);
-  border-radius: var(--border-radius);
-  width: 70%;
+#inner-progress-bar {
   height: 100%;
-  margin-left: 1rem;
-  overflow-y: auto;
-  box-shadow: var(--box-shadow);
-}
-
-aside {
-  background-color: var(--secondary-color);
-  border-radius: var(--border-radius);
-  width: 30%;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-
-#progress, #badges, .streak {
-  background-color: var(--accent-color);
-  box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius);
-  margin-bottom: 1rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-#github {
-  background-color: var(--accent-color);
-  box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius);
-  margin: 1rem;
-  padding: 2rem;
-}
-
-#progress {
-  flex: 0 0 auto;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px;
-  box-shadow: none;
-}
-
-#outer-bar {
-  border: 1px solid var(--primary-color);
-  border-radius: var(--border-radius);
-  width: 100%;
-  height: 0.7rem;
-  margin: 0 auto;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-#bar {
-  width: 80%;
-  height: 100%;
-  background-color: var(--primary-color);
+  background-color: #0d6efd;
   transition: width 0.3s ease;
+  width: 0%;
 }
 
-.offcanvas-body {
-  padding: 0px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
 
-.close {
-  width: 10%;
-  height: 100%;
-  display: flex;
-  justify-content: right;
-  align-items: baseline;
-}
-
-.close > button {
-  margin: 1rem;
-}
-
-#badges {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  overflow-y: auto;
-}
-
-.leaderboard {
-  margin-top: 2rem;
-  width: 80%;
-  height: 2rem;
-  padding-top: 0.3rem;
-  border-radius: var(--border-radius);
-  text-align: center;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-}
-
-.board p {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-#github {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  justify-content: center;
-  align-items: center;
-}
-
-#git {
-  padding: 1rem;
-  width: 100%;
-}
-
-#git > img {
-  width: 100%;
+#pdf-canvas {
+  max-width: 100%;
   height: auto;
-  object-fit: contain;
+  border: 1px solid #dee2e6;
+  margin-bottom: 1rem;
 }
 
-.search-btn {
-  width: 5rem;
-  height: 2rem;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--primary-color);
-  background-color: var(--primary-color) !important;
-  color: var(--secondary-color);
-  transition: all 0.3s ease;
+.pdf-navigation {
+  padding: 1rem 0;
+  border-top: 1px solid #dee2e6;
 }
 
-.search-btn:hover {
-  opacity: 0.8;
+#page-info {
+  font-size: 0.9rem;
+  color: #6c757d;
 }
 
-.text-xs {
-  margin-bottom: 5rem;
-  margin-top: 0px;
+
+/* Streak card */
+.streak-container {
+    display: flex;
+    align-items: flex-end;
+    padding: 0.5rem;
+    gap: 1rem;
 }
 
-.streak {
-  text-align: center;
-  padding: 1rem;
-  flex: 0 0 auto;
-  position: relative;
-  display: inline-block;
-}
-
-.streak-circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 6px solid var(--streak-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--text-color);
-  transition: all 0.3s ease;
-  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
-}
-
-.streak-circle:hover {
-  transform: scale(1.05);
+.streak-fire-container {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .streak-fire {
-  font-size: 30px;
-  margin-top: 10px;
-  animation: burn 0.5s ease-in-out infinite alternate;
+    font-size: 3.5rem;
+    position: absolute;
+    z-index: 1;
 }
 
-@keyframes burn {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
+.streak-number-overlay {
+    position: absolute;
+    z-index: 2;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+    text-shadow: 
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff;
 }
 
 .streak-stats {
-  margin-top: 10px;
-  font-size: 14px;
+    flex: 1;
+    margin: 0;
+}
+
+.streak-stats p {
+    margin: 0;
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+/* Leaderboard styles */
+.list-group-item {
+  border: none;
+  padding: 0.4rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .crown {
-  margin-right: 5px;
+  font-size: 1rem;
 }
 
-.gold { color: var(--gold-color); }
-.silver { color: var(--silver-color); }
-.bronze { color: var(--bronze-color); }
+.crown.gold { color: #ffd700; }
+.crown.silver { color: #c0c0c0; }
+.crown.bronze { color: #cd7f32; }
 
+/* GitHub heatmap */
 #github-heatmap-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
 }
 
 #github-heatmap {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(53, 1fr);
   gap: 2px;
-  width: calc(100% - 60px);
+  flex: 1;
 }
 
 .heatmap-cell {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 1px;
+}
+
+/* Card styles */
+.card {
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  background-color: white;
+  margin-bottom: 0.5rem;
+}
+
+.card-body {
+  padding: 0.75rem;
+}
+
+.card-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #212529;
+}
+
+/* Button styles */
+.btn-outline-dark, .btn-dark {
+  color: #000;
+  border-radius: 4px;
+  padding: 0.25rem 0.75rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container-fluid {
+      padding: 0 1rem;
+  }
+
+  #github-heatmap {
+      grid-template-columns: repeat(36, 1fr);
+  }
+
+  .streak-fire-container {
+      width: 40px;
+      height: 40px;
+  }
+
+  .streak-fire {
+      font-size: 2rem;
+  }
+
+  .streak-number-overlay {
+      font-size: 1rem;
+  }
+}
+
+.mt-4 {
+  margin-top: 0.5rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 0.5rem !important;
+}
+
+/* Custom scrollbar for heatmap */
+#github-heatmap-container::-webkit-scrollbar {
+  height: 4px;
+}
+
+#github-heatmap-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
   border-radius: 2px;
 }
 
-#prev-month, #next-month {
-  font-size: 18px;
-  padding: 0 5px;
-}
-
-iframe {
-  border-radius: var(--border-radius);
-  padding: 1rem;
-  background-color: var(--accent-color);
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .home {
-    flex-direction: column;
-  }
-
-  main, aside {
-    width: 100%;
-    margin: 1rem 0;
-  }
-}
-/* Accessibility improvements */
-a:focus, button:focus, input:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-}
-
-/* Modern scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
+#github-heatmap-container::-webkit-scrollbar-thumb {
   background: #888;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+#github-heatmap-container::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
