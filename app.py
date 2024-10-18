@@ -1,5 +1,6 @@
 import os
 import time
+from datetime import datetime, timedelta
 
 from cs50 import SQL
 from flask import Flask, jsonify, redirect, render_template, request, session, flash
@@ -25,13 +26,159 @@ def landing():
 @app.route('/home')
 @login_required
 def index():
-    return render_template('home.html')
+    user_id = session['user_id']
+    
+    # Get user data
+    user = db.execute("SELECT * FROM users WHERE id = ?", user_id)[0]
+    
+    # Get leaderboard data
+    leaderboard = db.execute("""
+        SELECT u.username, l.total_experience
+        FROM leaderboard l
+        JOIN users u ON l.user_id = u.id
+        ORDER BY l.total_experience DESC
+        LIMIT 5
+    """)
+    
+    # Update streak logic
+    current_date = time.strftime('%Y-%m-%d')
+    yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+    
+    # Check if user was active today
+    today_activity = db.execute("""
+        SELECT * FROM user_activity 
+        WHERE user_id = ? AND date = ?
+    """, user_id, current_date)
+    
+    # Check if user was active yesterday
+    yesterday_activity = db.execute("""
+        SELECT * FROM user_activity 
+        WHERE user_id = ? AND date = ?
+    """, user_id, yesterday)
+    
+    if today_activity:
+        if yesterday_activity:
+            # Increment streak if they were active yesterday
+            db.execute("""
+                UPDATE users 
+                SET current_streak = current_streak + 1,
+                    best_streak = CASE 
+                        WHEN current_streak + 1 > best_streak 
+                        THEN current_streak + 1 
+                        ELSE best_streak 
+                    END
+                WHERE id = ?
+            """, user_id)
+        else:
+            # Reset streak if they weren't active yesterday
+            db.execute("UPDATE users SET current_streak = 1 WHERE id = ?", user_id)
+    
+    # Get updated user data after streak calculation
+    user = db.execute("SELECT * FROM users WHERE id = ?", user_id)[0]
+    
+    return render_template('home.html', user=user, leaderboard=leaderboard)
 
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html')
+    user_id = session['user_id']
+    
+    # Get user data
+    user = db.execute("SELECT * FROM users WHERE id = ?", user_id)[0]
+    
+    # Get total experience
+    total_exp = db.execute("""
+        SELECT COALESCE(SUM(experience), 0) as total_exp 
+        FROM user_activity 
+        WHERE user_id = ?
+    """, user_id)[0]['total_exp']
+    
+    return render_template('profile.html', user=user, total_exp=total_exp)
 
+@app.route('/get_activity_data')
+@login_required
+def get_activity_data():
+    user_id = session['user_id']
+    month = request.args.get('month')
+    year = request.args.get('year')
+    
+    # Get available months/years
+    available_dates = db.execute("""
+        SELECT DISTINCT strftime('%Y-%m', date) as month_year
+        FROM user_activity 
+        WHERE user_id = ?
+        ORDER BY month_year DESC
+    """, user_id)
+    
+    # If month/year not specified, use most recent
+    if not month or not year:
+        if available_dates:
+            month_year = available_dates[0]['month_year'].split('-')
+            year = month_year[0]
+            month = month_year[1]
+    
+    # Get activity data for selected month
+    activity_data = db.execute("""
+        SELECT date, experience 
+        FROM user_activity 
+        WHERE user_id = ? 
+        AND strftime('%Y-%m', date) = ?
+        ORDER BY date ASC
+    """, user_id, f"{year}-{month}")
+    
+    dates = [row['date'] for row in activity_data]
+    experience = [row['experience'] for row in activity_data]
+    
+    return jsonify({
+        'dates': dates,
+        'experience': experience,
+        'available_dates': [d['month_year'] for d in available_dates]
+    })
+
+@app.route('/update_activity', methods=['POST'])
+@login_required
+def update_activity():
+    user_id = session['user_id']
+    current_time = time.time()
+    login_time = session.get('login_time')
+
+    if login_time:
+        time_spent = int(current_time - login_time)
+        # Change experience calculation to 10 XP per minute
+        experience = (time_spent // 60) * 10  # Convert seconds to minutes and multiply by 10
+        current_date = time.strftime('%Y-%m-%d')
+
+        try:
+            # Update user_activity
+            db.execute("""
+                INSERT INTO user_activity (user_id, date, time_spent, experience)
+                VALUES (?, ?, ?, ?)
+                ON CONFLICT(user_id, date) 
+                DO UPDATE SET 
+                time_spent = time_spent + ?,
+                experience = experience + ?
+            """, user_id, current_date, time_spent, experience, time_spent, experience)
+            
+            # Update leaderboard
+            total_exp = db.execute("""
+                SELECT COALESCE(SUM(experience), 0) as total_exp 
+                FROM user_activity 
+                WHERE user_id = ?
+            """, user_id)[0]['total_exp']
+            
+            db.execute("""
+                INSERT INTO leaderboard (user_id, total_experience)
+                VALUES (?, ?)
+                ON CONFLICT(user_id) 
+                DO UPDATE SET total_experience = ?
+            """, user_id, total_exp, total_exp)
+            
+            session['login_time'] = current_time
+            return jsonify({"status": "success"})
+        except Exception as e:
+            return jsonify({"status": "error", "message": str(e)}), 500
+
+    return jsonify({"status": "error", "message": "No login time found"}), 400
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -61,6 +208,7 @@ def login():
                 passErr = 'Invalid Password'
             else:
                 session['user_id'] = user[0]['id']
+                session['login_time'] = time.time()
                 return redirect('/home')
 
         return render_template('login.html', nameErr=nameErr, passErr=passErr)

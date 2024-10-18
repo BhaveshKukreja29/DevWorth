@@ -223,12 +223,12 @@
                         <h5 class="card-title">Streak</h5>
                         <div class="streak-container">
                             <div class="streak-fire-container">
-                                <div class="streak-number-overlay">34</div>
+                                <div class="streak-number-overlay">{{ user.current_streak }}</div>
                                 <div class="streak-fire">🔥</div>
                             </div>
                             <div class="streak-stats">
-                                <p>Best: 45 days</p>
-                                <p>Current: 34 days</p>
+                                <p>Best: {{ user.best_streak }} days</p>
+                                <p>Current: {{ user.current_streak }} days</p>
                             </div>
                         </div>
                     </div>
@@ -237,22 +237,19 @@
                     <div class="card-body">
                         <h5 class="card-title">Leaderboard</h5>
                         <ol class="list-group">
-                            <li class="list-group-item"><span class="crown gold">👑</span> Wade Wilson</li>
-                            <li class="list-group-item"><span class="crown silver">👑</span> Tony Stark</li>
-                            <li class="list-group-item"><span class="crown bronze">👑</span> Bruce Banner</li>
-                            <li class="list-group-item">Natasha Romanoff</li>
-                            <li class="list-group-item">Clint Barton</li>
+                            {% for leader in leaderboard %}
+                                <li class="list-group-item">
+                                    {% if loop.index == 1 %}
+                                        <span class="crown gold">👑</span>
+                                    {% elif loop.index == 2 %}
+                                        <span class="crown silver">👑</span>
+                                    {% elif loop.index == 3 %}
+                                        <span class="crown bronze">👑</span>
+                                    {% endif %}
+                                    {{ leader.username }} - {{ leader.total_experience }}XP
+                                </li>
+                            {% endfor %}
                         </ol>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">GitHub Activity</h5>
-                        <div id="github-heatmap-container">
-                            <button id="prev-month" class="btn btn-sm btn-outline-secondary">&lt;</button>
-                            <div id="github-heatmap"></div>
-                            <button id="next-month" class="btn btn-sm btn-outline-secondary">&gt;</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -280,14 +277,7 @@
             pdfViewer.src = '';
             docSelect.value = '';
         });
-
-        // Placeholder for GitHub heatmap
-        const heatmap = document.getElementById('github-heatmap');
-        for (let i = 0; i < 365; i++) {
-            const cell = document.createElement('div');
-            cell.className = 'heatmap-cell';
-            heatmap.appendChild(cell);
-        }
     </script>
-</body>
+    <script src="/static/update.js"></script>
+</body> 
 </html>
