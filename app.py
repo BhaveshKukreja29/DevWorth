@@ -144,7 +144,7 @@ def get_leaderboard():
         FROM leaderboard l
         JOIN users u ON l.user_id = u.id
         ORDER BY l.total_experience DESC
-        LIMIT 20
+        LIMIT 10
     """)
     
     return jsonify({"status": "success", "leaderboard": leaderboard})
