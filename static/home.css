@@ -27,9 +27,8 @@ html {
   text-decoration: none;
 }
 .nav-link {
-  color: white;
+  background-color: rgb(255, 255, 255);
   text-decoration: none;
-  border: 1px solid white;
   padding: 0.25rem 0.75rem;
   border-radius: 4px;
   transition: opacity 0.3s ease;

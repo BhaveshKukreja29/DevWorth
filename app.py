@@ -149,7 +149,6 @@ def get_leaderboard():
     
     return jsonify({"status": "success", "leaderboard": leaderboard})
 
-# Modify the update_activity route
 @app.route('/update_activity', methods=['POST'])
 @login_required
 def update_activity():
@@ -159,7 +158,7 @@ def update_activity():
 
     if login_time:
         time_spent = int(current_time - login_time)
-        # Calculate experience (10 XP per minute)
+        # 10 XP per minute
         experience = (time_spent // 60) * 10
 
         current_date = time.strftime('%Y-%m-%d')
