@@ -135,6 +135,21 @@ def get_activity_data():
         'available_dates': [d['month_year'] for d in available_dates]
     })
 
+@app.route('/get_leaderboard')
+@login_required
+def get_leaderboard():
+    # Get leaderboard data with more entries
+    leaderboard = db.execute("""
+        SELECT u.username, l.total_experience
+        FROM leaderboard l
+        JOIN users u ON l.user_id = u.id
+        ORDER BY l.total_experience DESC
+        LIMIT 10
+    """)
+    
+    return jsonify({"status": "success", "leaderboard": leaderboard})
+
+# Modify the update_activity route
 @app.route('/update_activity', methods=['POST'])
 @login_required
 def update_activity():
@@ -144,8 +159,9 @@ def update_activity():
 
     if login_time:
         time_spent = int(current_time - login_time)
-        # Change experience calculation to 10 XP per minute
-        experience = (time_spent // 60) * 10  # Convert seconds to minutes and multiply by 10
+        # Calculate experience (10 XP per minute)
+        experience = (time_spent // 60) * 10
+
         current_date = time.strftime('%Y-%m-%d')
 
         try:
@@ -159,7 +175,7 @@ def update_activity():
                 experience = experience + ?
             """, user_id, current_date, time_spent, experience, time_spent, experience)
             
-            # Update leaderboard
+            # Update leaderboard with fresh total
             total_exp = db.execute("""
                 SELECT COALESCE(SUM(experience), 0) as total_exp 
                 FROM user_activity 
@@ -173,8 +189,14 @@ def update_activity():
                 DO UPDATE SET total_experience = ?
             """, user_id, total_exp, total_exp)
             
+            # Reset login time to current time
             session['login_time'] = current_time
-            return jsonify({"status": "success"})
+            
+            return jsonify({
+                "status": "success",
+                "experience": total_exp
+            })
+            
         except Exception as e:
             return jsonify({"status": "error", "message": str(e)}), 500
 

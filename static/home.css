@@ -115,14 +115,38 @@ body {
     font-size: 0.85rem;
 }
 
-/* Leaderboard styles */
+.card.leaderboard-card {
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card.leaderboard-card .card-body {
+  padding: 0.75rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-group {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
 .list-group-item {
-  border: none;
   padding: 0.4rem 0.75rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
+}
+
+.list-group-item .rank {
+  min-width: 1.5rem;
+  font-weight: 500;
 }
 
 .crown {
@@ -132,6 +156,25 @@ body {
 .crown.gold { color: #ffd700; }
 .crown.silver { color: #c0c0c0; }
 .crown.bronze { color: #cd7f32; }
+
+/* Scrollbar styling */
+.list-group::-webkit-scrollbar {
+  width: 4px;
+}
+
+.list-group::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 2px;
+}
+
+.list-group::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 2px;
+}
+
+.list-group::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
 /* GitHub heatmap */
 #github-heatmap-container {
